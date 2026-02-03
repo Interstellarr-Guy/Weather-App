@@ -21,6 +21,8 @@ function App() {
       setWeather(null);
     }
   };
+  console.log("WEATHER STATE:", weather);
+
 
   return (
     <div className="App">
@@ -38,14 +40,23 @@ function App() {
       {error && <p className="error">{error}</p>}
 
       {weather && (
-        <div className="weather-info">
-          <h2>{weather.location.name}, {weather.location.country}</h2>
-          <p>🌡 Temperature: {weather.current.temp_c}°C</p>
-          <p>☁ Condition: {weather.current.condition.text}</p>
-          <img src={weather.current.condition.icon} alt="weather icon" />
+  <div>
+    <h2>
+      City Of {weather.location.name}, {weather.location.country}
+    </h2>
 
-        </div>
-      )}
+    <p>🌡 Temperature: {weather.current.temp_c}°C</p>
+    <p>☁ Condition: {weather.current.condition.text}</p>
+
+    
+
+    <img
+  src={`https:${weather.current.condition.icon}`}
+  alt="weather icon"
+  />
+
+  </div>
+)}
       </div>
     </div>
   );

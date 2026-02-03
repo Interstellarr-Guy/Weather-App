@@ -1,30 +1,18 @@
 import axios from "axios";
 
-//const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
-
-//console.log("API .KEY:", process.env.REACT_APP_WEATHER_API_KEY);
-
-// Endpoint 
-const BASE_URL = "https://api.weatherapi.com/v1/current.json";
+const BASE_URL = "https://weather-app-backend-clux.onrender.com/weather";
 
 export const getWeatherByCity = async (city) => {
   try {
     const response = await axios.get(BASE_URL, {
-      params: {
-        q: city,
-        key: process.env.REACT_APP_WEATHER_API_KEY ,
-        units: "metric",  // "metric" for °C
-        aqi:"no" 
-      },
+      params: { city: city }   // must match backend
     });
 
-    console.log("FULL RESPONSE:", response.data); // debug
+    console.log("FULL RESPONSE:", response.data);
 
     return response.data;
   } catch (error) {
     console.error("Weather API error:", error);
     throw error;
   }
-  
-
 };
